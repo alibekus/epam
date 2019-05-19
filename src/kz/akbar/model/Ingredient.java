@@ -10,8 +10,8 @@ public enum Ingredient {
     PEPPERONI("Pepperoni",0.6),
     OLIVES("Olives",0.5);
 
-    private final String title;
-    private final double cost;
+    private String title;
+    private double cost;
 
     Ingredient(String title, double cost) {
         this.title = title;

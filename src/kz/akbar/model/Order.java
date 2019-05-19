@@ -14,7 +14,7 @@ public class Order {
     private int pizzaAmount;
     private LocalTime orderTime;
     private List<Pizza> pizzaList = new ArrayList<>();
-    public static final int COUNT_LIMIT = 10;
+    public static final int PIZZA_ORDER_LIMIT = 10;
     public static final String EURO = "\u20ac";
     private OrderNumber orderNumber = OrderNumber.getInstance();
 
@@ -27,8 +27,8 @@ public class Order {
 
     public Order(int clientNumber, String clientName) {
         this.orderId = orderNumber.getOrderNumber();
+        Order.clientNumber = clientNumber;
         this.clientName = clientName;
-        this.clientNumber = clientNumber;
         orderTime = LocalTime.now();
     }
 
@@ -37,17 +37,17 @@ public class Order {
             for (int i = 0; i < pizza.length; i++) {
                 pizzaAmount += pizza[i].getCount();
             }
-            if (pizzaAmount > COUNT_LIMIT) {
+            if (pizzaAmount > PIZZA_ORDER_LIMIT) {
                 System.out.println("In your order more than 10 pizza!\nOnly 10 first pizza will be prepared.");
             }
             pizzaAmount = 0;
             for (int i = 0; i < pizza.length; i++) {
                 int pizzaCount = pizza[i].getCount();
-                int countDiffer = COUNT_LIMIT - pizzaAmount;
+                int countDiffer = PIZZA_ORDER_LIMIT - pizzaAmount;
                 if (countDiffer == 0) {
                     break;
                 }
-                if (pizzaCount >= countDiffer ) {
+                if (pizzaCount >= countDiffer) {
                     pizza[i].setCount(countDiffer);
                 }
                 pizzaList.add(pizza[i]);

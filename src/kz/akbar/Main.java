@@ -59,7 +59,7 @@ public class Main {
     }
 
     private static int inputNumberChoice(BufferedReader br) throws IOException {
-        int choiceNumber = 0;
+        int choiceNumber;
         for (; ; ) {
             try {
                 choiceNumber = Integer.parseInt(br.readLine());
@@ -127,8 +127,8 @@ public class Main {
                 pizza.addIngredients(ingredient);
             }
             order.addPizza(pizza);
-            if (pizzaAmount + 1 < 10) {
-                System.out.println("You can order " + (10 - pizzaAmount) + " more pizza.");
+            if (pizzaAmount + 1 < Order.PIZZA_ORDER_LIMIT) {
+                System.out.println("You can order " + (Order.PIZZA_ORDER_LIMIT - pizzaAmount) + " more pizza.");
                 System.out.println("If you want to order more pizza, press 'y', else press any key.");
                 String answer = br.readLine();
                 if (answer.equalsIgnoreCase("y")) {
